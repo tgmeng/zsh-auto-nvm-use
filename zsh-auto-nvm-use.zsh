@@ -2,19 +2,16 @@ autoload -U add-zsh-hook
 
 load-nvmrc() {
   local node_version="$(nvm version)"
-  local nvmrc_path="$(nvm_find_nvmrc)"
+  local nvmrc_path=".nvmrc"
 
-  if [[ -n "$nvmrc_path" ]]; then
+  if [[ -f "$nvmrc_path" ]]; then
     local nvmrc_node_version="$(cat "${nvmrc_path}")"
 
     if [[ "$(nvm version "$nvmrc_node_version")" = "N/A" ]]; then
-      echo "node ${nvmrc_node_version} is not installed, please install through \`nvm install\`"
+      echo "node ${nvmrc_node_version} is not installed, please install through \`nvm install ${nvmrc_node_version}\`"
     elif [[ "$nvmrc_node_version" != "$node_version" ]]; then
       nvm use
     fi
-  elif [[ "$node_version" != "$(nvm version default)" ]]; then
-    echo "Reverting to nvm default version"
-    nvm use default
   fi
 }
 
