@@ -23,7 +23,7 @@ load-nvmrc() {
     if [[ -z "$new_version" ]]; then
       echo "No suitable node version was found, please install through \`nvm install ${nvmrc_node_version}\`"
     elif [[ "$new_version" != "$(nvm version)" ]]; then
-      # nvm use "$new_version"
+      nvm use "$new_version"
     fi
   fi
 }
