@@ -11,7 +11,7 @@ No suitable node version was found, please install through `nvm install v14.20.1
 
 ## Installation
 
-zplug
+### zplug
 
 ```zsh
 zplug "tgmeng/zsh-auto-nvm-use", from:"github", use:"zsh-auto-nvm-use.zsh"
